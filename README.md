@@ -115,6 +115,8 @@ npm start
 
 打包需要 Node.js 22 或更新版本、npm 和 Xcode Command Line Tools。脚本在缺少项目依赖时会自动运行 `npm ci`；首次安装依赖或下载其他架构的 Electron 时需要网络连接。
 
+打包会自动完成 ad-hoc 本地签名，无需 Apple 开发者账号或证书。
+
 如果缺少 Xcode 命令行工具，可在终端运行：
 
 ```bash
@@ -178,6 +180,16 @@ dist/release/arm64/
 重新打包生成的是新文件。要让设置界面、铃声或其他功能的代码修改生效，需要运行更新后的应用。
 
 ## 常见问题
+
+### macOS 提示“已损坏，无法打开”
+
+通过微信或浏览器接收安装包后，macOS 可能拦截未公证的应用。确认文件是本项目打包的副本后，点击“取消”，将应用拖入“应用程序”，然后在终端执行：
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/ChatGPT Light.app"
+```
+
+随后重新打开应用。如果提示权限不足，在命令开头加上 `sudo`，并输入 Mac 登录密码。这条命令只移除 ChatGPT Light 的下载隔离标记。
 
 ### 灯条没有显示对话
 
