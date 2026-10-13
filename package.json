@@ -1,0 +1,70 @@
+{
+  "name": "chatgpt-light",
+  "version": "0.0.1",
+  "description": "Per-conversation status lights for Codex in ChatGPT Desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "node scripts/run-electron.js .",
+    "server": "node server.js",
+    "build": "electron-builder",
+    "build:mac": "bash scripts/build-macos.sh",
+    "test": "node --test tests/*.test.js",
+    "smoke": "node scripts/run-electron.js scripts/smoke-app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "license": "MIT",
+  "build": {
+    "appId": "com.loteat.chatgpt-light",
+    "productName": "ChatGPT Light",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg"
+      ],
+      "artifactName": "ChatGPT-Light-V0.0.1-${arch}.${ext}"
+    },
+    "asar": true,
+    "compression": "normal",
+    "dmg": {
+      "format": "ULFO"
+    },
+    "files": [
+      "main.js",
+      "server.js",
+      "app-target.js",
+      "session-state.js",
+      "session-monitor.js",
+      "account-quota.js",
+      "public/**/*",
+      "package.json",
+      "widget-layout.js",
+      "LICENSE"
+    ],
+    "buildVersion": "0.0.1",
+    "extraResources": [
+      {
+        "from": "node_modules/electron/dist/LICENSE",
+        "to": "licenses/Electron-LICENSE"
+      },
+      {
+        "from": "node_modules/electron/dist/LICENSES.chromium.html",
+        "to": "licenses/LICENSES.chromium.html"
+      }
+    ]
+  },
+  "author": "LOTEAT"
+}

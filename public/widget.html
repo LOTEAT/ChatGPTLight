@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Light</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="widget-body">
+  <main class="conversation-widget" id="desktop-widget">
+    <header class="strip-header">
+      <span class="strip-drag" title="按住拖动灯条">⠿</span>
+      <span class="strip-heading">ChatGPT Light</span>
+      <span class="strip-count" id="widget-count">连接中</span>
+      <button class="strip-button" id="btn-open-control" title="选择对话、调整大小和显示选项">设置</button>
+      <button class="strip-button strip-close" id="btn-close-app" aria-label="退出状态监测">×</button>
+    </header>
+    <div class="conversation-strip" id="widget-sessions" aria-live="polite">
+      <p class="strip-empty">正在连接状态服务…</p>
+    </div>
+    <footer class="strip-footer">
+      <span class="strip-note" id="widget-note">每个灯对应一个对话</span>
+      <span class="strip-quota" id="widget-quota" aria-label="剩余额度"><span id="widget-quota-five-hour">5 小时 --</span><span aria-hidden="true">·</span><span id="widget-quota-weekly">Weekly --</span></span>
+      <nav class="strip-pages" aria-label="对话翻页">
+        <button class="strip-button" id="widget-prev" aria-label="上一页">‹</button>
+        <span id="widget-page">1 / 1</span>
+        <button class="strip-button" id="widget-next" aria-label="下一页">›</button>
+      </nav>
+    </footer>
+  </main>
+  <script src="status-meta.js"></script>
+  <script src="widget-model.js"></script>
+  <script src="quota-model.js"></script>
+  <script src="completion-sound.js"></script>
+  <script src="widget.js"></script>
+</body>
+</html>

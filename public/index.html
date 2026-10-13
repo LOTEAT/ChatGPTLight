@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Light 设置</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <header><h1>悬浮灯设置</h1><p>更改后自动保存，立即生效。</p></header>
+  <main>
+    <section class="setting-group" aria-label="悬浮灯选项">
+      <div class="setting-row size-row">
+        <label for="scale-slider">灯条大小</label>
+        <div class="size-control"><input type="range" id="scale-slider" min="0.4" max="2" step="0.1" value="1" disabled><output id="scale-value-display" for="scale-slider">100%</output></div>
+      </div>
+      <div class="setting-row"><label for="widget-mode">显示对话</label><select id="widget-mode" disabled><option value="auto">自动显示活跃对话</option><option value="manual">仅显示我选择的对话</option></select></div>
+      <div class="setting-row"><span>自动移除</span><span class="setting-value">5 分钟没有新活动</span></div>
+      <div class="setting-row"><label for="show-quota">显示 5 小时和 Weekly 剩余额度</label><input type="checkbox" id="show-quota" role="switch" disabled></div>
+      <div class="setting-row"><label for="play-completion-sound">完成时播放三声提示音</label><input type="checkbox" id="play-completion-sound" role="switch" disabled></div>
+    </section>
+    <p class="hint">对话有新活动时，灯会自动回来。</p>
+
+    <details id="conversation-settings" class="setting-group">
+      <summary>选择显示的对话 <span id="sessions-count"></span></summary>
+      <div class="details-body">
+        <p class="hint">取消勾选可隐藏。手动选择的灯也会在 5 分钟无活动后移除。</p>
+        <div class="session-filters"><input type="search" id="session-search" placeholder="搜索对话" aria-label="搜索对话"><select id="session-filter" aria-label="对话范围"><option value="recent">最近活动</option><option value="all">全部对话</option></select></div>
+        <div id="session-list" class="session-list"><p class="session-empty">正在读取对话…</p></div>
+      </div>
+    </details>
+
+    <details id="advanced-settings" class="setting-group">
+      <summary>高级设置</summary>
+      <div class="details-body advanced-body">
+        <p class="hint">通常无需更改。找不到本地对话时，可检查日志目录。</p>
+        <label for="codex-log-path">本地对话日志目录</label><input type="text" id="codex-log-path" placeholder="~/.codex/sessions" disabled>
+        <label for="codex-app-path">ChatGPT 应用路径</label><input type="text" id="codex-app-path" placeholder="/Applications/ChatGPT.app" disabled>
+      </div>
+    </details>
+  </main>
+  <footer><div class="feedback"><span id="codex-ws-status">连接中…</span><span id="save-feedback" role="status" aria-live="polite"></span></div><button id="btn-close-settings" type="button">完成</button></footer>
+  <script src="status-meta.js"></script>
+  <script src="widget-model.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
